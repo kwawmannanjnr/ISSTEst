@@ -34,6 +34,9 @@ public class GatewayController implements ResponseListener.Listener,ErrorRespons
     private static GatewayController instance = null;
     private IISSPresenter presenter;
     private Context mContext;
+    /**
+     * Network handler instance for network calls defined on Network sdk module.
+     */
     private NetworkHandler networkHandler;
     private PriorityJobQueue priorityJobQueue;
     private IHttpConnection.IResponseObserver.RequestTypeEnum mResponseType;
@@ -54,11 +57,6 @@ public class GatewayController implements ResponseListener.Listener,ErrorRespons
     //Methods to process the network request
 
     public void processNetworkRequest(IHttpConnection.IResponseObserver.RequestTypeEnum mResponseType, Object requestParams, Request.Priority priority) {
-      /*  if (!NetworkUtility.hasInternetConnection(mContext)) {
-            //TODO: Show Error message for network not available
-            Toast.makeText(mContext, mContext.getResources().getString(R.string.network_unavailable), Toast.LENGTH_LONG).show();
-            return;
-        }*/
         this.mResponseType = mResponseType;
         switch (mResponseType) {
             case POST_CONTENT:
@@ -66,7 +64,7 @@ public class GatewayController implements ResponseListener.Listener,ErrorRespons
                 postRequest(requestParams, mResponseType, priority);
                 break;
             case GET_PASSTIME:
-                Log.v(TAG, "LOGIN_AUTH_SERVICE processNetworkRequest()-->");
+                Log.v(TAG, "Passtime processNetworkRequest()-->");
                 getPassTime(requestParams, mResponseType, priority);
                 break;
 
@@ -133,16 +131,11 @@ public class GatewayController implements ResponseListener.Listener,ErrorRespons
     @Override
     public void onResponseObject(NetworkResponse response, Response<String> responseObject, Object requestTAG, Object requestParams) {
 
-        Log.v(TAG, "Isemail onResponseObject()-->pre");
-        Log.v("LogoutRequest", "onResponseObject()-->pre");
-        Log.v("IsUser", "onResponseObject()-->pre");
+        Log.v(TAG, "onResponseObject()-->pre");
         IHttpConnection.IResponseObserver.RequestTypeEnum mResponseTypeFromRequest = (IHttpConnection.IResponseObserver.RequestTypeEnum) requestTAG;
         //Reset if response received
         presenter.responseReceived(response.statusCode, responseObject.result, mResponseTypeFromRequest, requestParams);
-        Log.v(TAG, "Isemail  onResponseObject()-->post");
-        Log.v(TAG, "LogoutRequest onResponseObject()-->post");
-        Log.v(TAG, "IsUser onResponseObject()-->post");
-    }    // response definition methods
+    }
 
     @Override
     public void onErrorResponse(VolleyError error) {

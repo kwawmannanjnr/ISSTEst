@@ -94,14 +94,6 @@ public class ISSAdapter extends RecyclerView.Adapter<ISSAdapter.ISSViewHolder> {
         public ISSViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-//            itemViewWM = itemView;
-//            itemView.setClickable(true);
-//            mWeatherImageView = (ImageView) itemView.findViewById(R.id.weather_imgView);
-//            mLatLong = (TextView) itemView.findViewById(R.id.latlong);
-//            mShipperLogoTxt = (TextView) itemView.findViewById(R.id.climatetext);
-//            mCityNameTextView = (TextView) itemView.findViewById(R.id.citi_name);
-//            ETAtextView = (TextView) itemView.findViewById(R.id.weatherforcast);
-//            mItemLayout = (RelativeLayout) itemView.findViewById(R.id.item_layout);
         }
     }
 }
