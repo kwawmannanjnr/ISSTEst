@@ -88,9 +88,6 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
         if(mLocaChangedListner != null) {
             mLocaChangedListner.onLocationChanged(location);
         }
-//        ISSPresenterImp.getInstance().getPassTime(location.getLatitude() ,location.getLongitude());
-//        LatLng mLocation = (new LatLng(location.getLatitude(), location.getLongitude()));
-//        EventBus.getDefault().post(mLocation);
 
     }
 

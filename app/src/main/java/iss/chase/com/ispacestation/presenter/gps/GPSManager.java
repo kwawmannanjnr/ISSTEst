@@ -17,7 +17,7 @@ import iss.chase.com.ispacestation.view.ILocationChanged;
 
 
 /**
- * Created by soma on 1/6/2018.
+ * Created by Bikash on 1/6/2018.
  */
 
 public class GPSManager extends Service implements LocationListener {
